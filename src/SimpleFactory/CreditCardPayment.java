@@ -1,4 +1,4 @@
-package Factory;
+package SimpleFactory;
 
 public class CreditCardPayment implements Payment{
 }

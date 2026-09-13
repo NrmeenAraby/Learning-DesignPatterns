@@ -1,6 +1,6 @@
 import Builder.Order;
-import Factory.Payment;
-import Factory.PaymentFactory;
+import SimpleFactory.Payment;
+import SimpleFactory.PaymentFactory;
 
 public class Main {
     public static void main(String[] args) {

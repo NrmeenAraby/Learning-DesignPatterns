@@ -1,4 +1,4 @@
-package Factory;
+package SimpleFactory;
 
 public class PaymentFactory {
     public static Payment create(String type){

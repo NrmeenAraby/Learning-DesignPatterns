@@ -1,4 +1,4 @@
-package Factory;
+package SimpleFactory;
 
 public interface Payment {
 }
