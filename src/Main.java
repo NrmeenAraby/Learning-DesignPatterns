@@ -1,10 +1,13 @@
 import Builder.Order;
+import FactoryMethod.Factory.Dialog;
+import FactoryMethod.Factory.HtmlDialog;
+import FactoryMethod.Factory.WindowsDialog;
 import SimpleFactory.Payment;
 import SimpleFactory.PaymentFactory;
 
 public class Main {
     public static void main(String[] args) {
-        //Factory
+        //Simple Factory
         Payment payment;
         payment= PaymentFactory.create("Card");
 
@@ -14,5 +17,10 @@ public class Main {
                 .address("dufhufv")
                 .build();        //-while the order itself is created via the build method as u know
 
+        //Factory Method
+        Dialog winDialog=new WindowsDialog();
+        winDialog.renderWindow();
+        Dialog htmlDialog = new HtmlDialog();
+        htmlDialog.renderWindow();
     }
 }
