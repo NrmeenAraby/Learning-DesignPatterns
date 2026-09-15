@@ -9,4 +9,5 @@ public interface Builder {
     void setTransmission(String transmission);
     void setTripComputer(String tripComputer);
     void setGpsNavigator(String gpsNavigator);
+    void reset();
 }

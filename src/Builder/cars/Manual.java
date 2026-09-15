@@ -22,7 +22,7 @@ public class Manual {
         String info = "";
         info += "Type of car: " + carType + "\n";
         info += "Count of seats: " + seats + "\n";
-        info += "Engine: volume , mileage" + engine + "\n";
+        info += "Engine: volume , mileage: " + engine + "\n";
         info += "Transmission: " + transmission + "\n";
         if (this.tripComputer != null) {
             info += "Trip Computer: Functional" + "\n";

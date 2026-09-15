@@ -51,5 +51,9 @@ public class Main {
         Manual carManual=manualBuilder.getResult();
         System.out.println("\nCar manual built:\n" + carManual.print());
 
+        //debugging the resetting
+        director.randomToTestReset(manualBuilder);
+        Manual carManual2=manualBuilder.getResult();
+        System.out.println("\nCar manual built:\n" + carManual2.print());
     }
 }

@@ -47,4 +47,13 @@ public class ManualBuilder implements Builder{
     public Manual getResult(){
         return new Manual(carType,seats,engine,transmission,tripComputer,gpsNavigator);
     }
+
+    public void reset(){
+        this.carType = null;
+        this.seats = 0;
+        this.engine = null;
+        this.transmission = null;
+        this.tripComputer = null;
+        this.gpsNavigator = null;
+    }
 }
