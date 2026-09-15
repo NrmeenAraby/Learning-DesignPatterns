@@ -3,12 +3,6 @@ import AbstractFactory.checkboxes.Checkbox;
 import AbstractFactory.factories.GuiFactory;
 import AbstractFactory.factories.MacOsFactory;
 import AbstractFactory.factories.WindowsFactory;
-import Builder.Order;
-import FactoryMethod.Factory.Dialog;
-import FactoryMethod.Factory.HtmlDialog;
-import FactoryMethod.Factory.WindowsDialog;
-import SimpleFactory.Payment;
-import SimpleFactory.PaymentFactory;
 
 public class Main {
     public static void main(String[] args) {

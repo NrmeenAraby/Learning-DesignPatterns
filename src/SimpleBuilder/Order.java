@@ -1,4 +1,4 @@
-package Builder;
+package SimpleBuilder;
 //@Builder
 public class Order {
     private String customerName;

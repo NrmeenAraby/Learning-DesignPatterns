@@ -1,6 +1,6 @@
 package Observer;
 
-import Builder.Order;
+import SimpleBuilder.Order;
 
 public class emailListener implements OrderObserver {
 
