@@ -10,7 +10,7 @@ public class Main {
 //        Payment payment;
 //        payment= PaymentFactory.create("Card");
 
-        //Builder
+        //Simple Builder
 //        Order order= new Order.Builder()  //this new keyword creates the Builder that get modified by the builder methods-
 //                .customerName("Nrmeen")
 //                .address("dufhufv")
@@ -23,14 +23,17 @@ public class Main {
 //        htmlDialog.renderWindow();
 
         // Abstract Factory
-        GuiFactory factory1=new MacOsFactory();
-        GuiFactory factory2 =new WindowsFactory();
-        /* the configuration done without any action from the client, so the client now can create whatever button or
-         checkbox they need without knowing about factory creating
-        */
-        Button button=factory1.createButton();
-        Checkbox checkbox=factory1.createCheckbox();
-        button.paint();
-        checkbox.paint();
+//        GuiFactory factory1=new MacOsFactory();
+//        GuiFactory factory2 =new WindowsFactory();
+//        /* the configuration done without any action from the client, so the client now can create whatever button or
+//         checkbox they need without knowing about factory creating
+//        */
+//        Button button=factory1.createButton();
+//        Checkbox checkbox=factory1.createCheckbox();
+//        button.paint();
+//        checkbox.paint();
+
+         //Builder
+
     }
 }

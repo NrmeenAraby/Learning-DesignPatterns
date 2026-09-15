@@ -41,6 +41,9 @@ public class ManualBuilder implements Builder{
         this.gpsNavigator=gpsNavigator;
     }
 
+     /** Unlike other creational patterns, Builder can construct unrelated products,
+      * which don't have the common interface
+      */
     public Manual getResult(){
         return new Manual(carType,seats,engine,transmission,tripComputer,gpsNavigator);
     }

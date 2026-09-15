@@ -34,6 +34,9 @@ public class CarBuilder implements Builder {
         this.gpsNavigator=gpsNavigator;
     }
 
+    /** Unlike other creational patterns, Builder can construct unrelated products,
+     * which don't have the common interface
+     */
     public Car getResult(){
         return new Car(carType,seats,engine,transmission,tripComputer,gpsNavigator);
     }
