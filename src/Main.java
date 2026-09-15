@@ -3,6 +3,11 @@ import AbstractFactory.checkboxes.Checkbox;
 import AbstractFactory.factories.GuiFactory;
 import AbstractFactory.factories.MacOsFactory;
 import AbstractFactory.factories.WindowsFactory;
+import Builder.builders.CarBuilder;
+import Builder.builders.ManualBuilder;
+import Builder.cars.Car;
+import Builder.cars.Manual;
+import Builder.director.Director;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +39,17 @@ public class Main {
 //        checkbox.paint();
 
          //Builder
+        Director director=new Director();
+
+        CarBuilder carBuilder=new CarBuilder();
+        director.constructSportsCar(carBuilder);
+        Car car=carBuilder.getResult();
+        System.out.println("Car built:\n" + car.getCarType());
+
+        ManualBuilder manualBuilder=new ManualBuilder();
+        director.constructSportsCar(manualBuilder);
+        Manual carManual=manualBuilder.getResult();
+        System.out.println("\nCar manual built:\n" + carManual.print());
 
     }
 }
