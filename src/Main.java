@@ -8,6 +8,7 @@ import Builder.builders.ManualBuilder;
 import Builder.cars.Car;
 import Builder.cars.Manual;
 import Builder.director.Director;
+import Facade.facade.VideoConversionFacade;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,21 +40,25 @@ public class Main {
 //        checkbox.paint();
 
          //Builder
-        Director director=new Director();
+//        Director director=new Director();
+//
+//        CarBuilder carBuilder=new CarBuilder();
+//        director.constructSportsCar(carBuilder);
+//        Car car=carBuilder.getResult();
+//        System.out.println("Car built:\n" + car.getCarType());
+//
+//        ManualBuilder manualBuilder=new ManualBuilder();
+//        director.constructSportsCar(manualBuilder);
+//        Manual carManual=manualBuilder.getResult();
+//        System.out.println("\nCar manual built:\n" + carManual.print());
+//
+//        //debugging the resetting
+//        director.randomToTestReset(manualBuilder);
+//        Manual carManual2=manualBuilder.getResult();
+//        System.out.println("\nCar manual built:\n" + carManual2.print());
 
-        CarBuilder carBuilder=new CarBuilder();
-        director.constructSportsCar(carBuilder);
-        Car car=carBuilder.getResult();
-        System.out.println("Car built:\n" + car.getCarType());
-
-        ManualBuilder manualBuilder=new ManualBuilder();
-        director.constructSportsCar(manualBuilder);
-        Manual carManual=manualBuilder.getResult();
-        System.out.println("\nCar manual built:\n" + carManual.print());
-
-        //debugging the resetting
-        director.randomToTestReset(manualBuilder);
-        Manual carManual2=manualBuilder.getResult();
-        System.out.println("\nCar manual built:\n" + carManual2.print());
+        //Facade
+        VideoConversionFacade facadeConverter=new VideoConversionFacade();
+        facadeConverter.convertVideo("youtubevideo.ogg", "mp4");
     }
 }
