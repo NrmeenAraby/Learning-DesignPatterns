@@ -3,6 +3,12 @@ import AbstractFactory.checkboxes.Checkbox;
 import AbstractFactory.factories.GuiFactory;
 import AbstractFactory.factories.MacOsFactory;
 import AbstractFactory.factories.WindowsFactory;
+import Bridge.devices.Device;
+import Bridge.devices.Radio;
+import Bridge.devices.Tv;
+import Bridge.remotes.AdvancedRemote;
+import Bridge.remotes.BasicRemote;
+import Bridge.remotes.Remote;
 import Builder.builders.CarBuilder;
 import Builder.builders.ManualBuilder;
 import Builder.cars.Car;
@@ -58,7 +64,19 @@ public class Main {
 //        System.out.println("\nCar manual built:\n" + carManual2.print());
 
         //Facade
-        VideoConversionFacade facadeConverter=new VideoConversionFacade();
-        facadeConverter.convertVideo("youtubevideo.ogg", "mp4");
+//        VideoConversionFacade facadeConverter=new VideoConversionFacade();
+//        facadeConverter.convertVideo("youtubevideo.ogg", "mp4");
+
+        //Bridge
+        //client code deals with the abstraction layer, but also creates the objects of both(implementation and abstraction hierarchies)
+        Tv tvDevice=new Tv();
+        Remote basic=new BasicRemote(tvDevice);
+        basic.volumeUp();
+        Remote advanced=new AdvancedRemote(tvDevice);
+        advanced.volumeUp();
+
+        Radio radio=new Radio();
+        AdvancedRemote advancedRemote=new AdvancedRemote(radio);
+        advancedRemote.mute();
     }
 }
