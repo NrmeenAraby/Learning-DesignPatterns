@@ -15,6 +15,9 @@ import Builder.cars.Car;
 import Builder.cars.Manual;
 import Builder.director.Director;
 import Facade.facade.VideoConversionFacade;
+import Proxy.client.YouTubeDownloader;
+import Proxy.proxy.YouTubeCacheProxy;
+import Proxy.some_cool_media_library.ThirdPartyYouTubeClass;
 
 public class Main {
     public static void main(String[] args) {
@@ -79,6 +82,30 @@ public class Main {
 //        AdvancedRemote advancedRemote=new AdvancedRemote(radio);
 //        advancedRemote.mute();
 
+        //Proxy
+        //client code inside YouTubeDownloader, here we clarify proxy effect
+        YouTubeDownloader naiveDownloader =new YouTubeDownloader(new ThirdPartyYouTubeClass()); //using the real service direct
+        YouTubeDownloader smartDownloader =new YouTubeDownloader(new YouTubeCacheProxy(new ThirdPartyYouTubeClass()));
 
+        long naiveTime = test(naiveDownloader);
+        long smartTime = test(smartDownloader);
+        System.out.println("Time saved by caching proxy: " + (naiveTime - smartTime) + "ms");
+
+    }
+    private static long test(YouTubeDownloader downloader) {
+        long startTime = System.currentTimeMillis();
+
+        // User behavior in our app:
+        downloader.renderPopularVideos();
+        downloader.renderVideoPage("catzzzzzzzzz");
+        downloader.renderPopularVideos();
+        downloader.renderVideoPage("dancesvideoo");
+        // Users might visit the same page quite often.
+        downloader.renderVideoPage("catzzzzzzzzz");
+        downloader.renderVideoPage("someothervid");
+
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        System.out.print("Time elapsed: " + estimatedTime + "ms\n");
+        return estimatedTime;
     }
 }
