@@ -18,6 +18,9 @@ import Facade.facade.VideoConversionFacade;
 import Proxy.client.YouTubeDownloader;
 import Proxy.proxy.YouTubeCacheProxy;
 import Proxy.some_cool_media_library.ThirdPartyYouTubeClass;
+import TemplateMethod.Facebook;
+import TemplateMethod.Network;
+import TemplateMethod.Twitter;
 
 public class Main {
     public static void main(String[] args) {
@@ -84,12 +87,20 @@ public class Main {
 
         //Proxy
         //client code inside YouTubeDownloader, here we clarify proxy effect
-        YouTubeDownloader naiveDownloader =new YouTubeDownloader(new ThirdPartyYouTubeClass()); //using the real service direct
-        YouTubeDownloader smartDownloader =new YouTubeDownloader(new YouTubeCacheProxy(new ThirdPartyYouTubeClass()));
+//        YouTubeDownloader naiveDownloader =new YouTubeDownloader(new ThirdPartyYouTubeClass()); //using the real service direct
+//        YouTubeDownloader smartDownloader =new YouTubeDownloader(new YouTubeCacheProxy(new ThirdPartyYouTubeClass()));
+//
+//        long naiveTime = test(naiveDownloader);
+//        long smartTime = test(smartDownloader);
+//        System.out.println("Time saved by caching proxy: " + (naiveTime - smartTime) + "ms");
 
-        long naiveTime = test(naiveDownloader);
-        long smartTime = test(smartDownloader);
-        System.out.println("Time saved by caching proxy: " + (naiveTime - smartTime) + "ms");
+        //Template Method
+        Network fbNetwork=new Facebook("Nerooo","0000");
+        fbNetwork.post("heyaaaa");
+
+        Network twNetwork=new Twitter("zzzz","1111");
+        twNetwork.post("hope");
+
 
     }
     private static long test(YouTubeDownloader downloader) {
