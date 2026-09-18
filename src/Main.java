@@ -69,14 +69,16 @@ public class Main {
 
         //Bridge
         //client code deals with the abstraction layer, but also creates the objects of both(implementation and abstraction hierarchies)
-        Tv tvDevice=new Tv();
-        Remote basic=new BasicRemote(tvDevice);
-        basic.volumeUp();
-        Remote advanced=new AdvancedRemote(tvDevice);
-        advanced.volumeUp();
+//        Tv tvDevice=new Tv();
+//        Remote basic=new BasicRemote(tvDevice);
+//        basic.volumeUp();
+//        Remote advanced=new AdvancedRemote(tvDevice);
+//        advanced.volumeUp();
+//
+//        Radio radio=new Radio();
+//        AdvancedRemote advancedRemote=new AdvancedRemote(radio);
+//        advancedRemote.mute();
 
-        Radio radio=new Radio();
-        AdvancedRemote advancedRemote=new AdvancedRemote(radio);
-        advancedRemote.mute();
+
     }
 }
