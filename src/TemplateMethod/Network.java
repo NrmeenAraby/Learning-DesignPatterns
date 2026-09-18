@@ -7,6 +7,7 @@ public abstract class Network {
 
     public final boolean post(String message){
         startPost();
+        hook();
         if(logIn(this.username,this.password)){
             sendDate(message);
             logOut();
