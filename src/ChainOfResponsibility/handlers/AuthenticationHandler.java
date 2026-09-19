@@ -6,7 +6,7 @@ import ChainOfResponsibility.request.Request;
 public class AuthenticationHandler extends Handler{
     @Override
     public boolean check(Request request) {
-        if(request.getPriority()!= Priority.AUTHENTICATION && request.getPriority()!=Priority.SUPER) {
+        if(request.getPriority()!= Priority.AUTHENTICATION && request.getPriority()!=Priority.SUPER) { // just simulation, the real check logic can be different
             System.out.println("Cant be authenticated");
             return false;
         }

@@ -94,7 +94,7 @@ public class Main {
         //Proxy
         //client code inside YouTubeDownloader, here we clarify proxy effect
 //        YouTubeDownloader naiveDownloader =new YouTubeDownloader(new ThirdPartyYouTubeClass()); //using the real service direct
-//        YouTubeDownloader smartDownloader =new YouTubeDownloader(new YouTubeCacheProxy(new ThirdPartyYouTubeClass()));
+//        YouTubeDownloader smartDownloader =new YouTubeDownloader(new YouTubeCacheProxy(new ThirdPartyYouTubeClass())); //using proxy
 //
 //        long naiveTime = test(naiveDownloader);
 //        long smartTime = test(smartDownloader);
@@ -108,15 +108,19 @@ public class Main {
 //        twNetwork.post("hope");
 
         //Chain of responsibility
-        Handler chain=new AuthenticationHandler();
-        chain.link(new ValidationHandler())
-                .link(new AuthorizationHandler());
-        chain.check(new Request("to make all pass", Priority.SUPER));
-        System.out.println("----------------------");
-        chain.check(new Request("authenticated only",Priority.AUTHENTICATION));
+//        Handler chain=new AuthenticationHandler();
+//        chain.link(new ValidationHandler())
+//                .link(new AuthorizationHandler());
+//        chain.check(new Request("to make all pass", Priority.SUPER));
+//        System.out.println("----------------------");
+//        chain.check(new Request("authenticated only",Priority.AUTHENTICATION));
 
     }
-    private static long test(YouTubeDownloader downloader) {
+
+
+
+
+    /*private static long test(YouTubeDownloader downloader) {
         long startTime = System.currentTimeMillis();
 
         // User behavior in our app:
@@ -131,5 +135,5 @@ public class Main {
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.print("Time elapsed: " + estimatedTime + "ms\n");
         return estimatedTime;
-    }
+    }*/
 }
