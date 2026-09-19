@@ -14,6 +14,12 @@ import Builder.builders.ManualBuilder;
 import Builder.cars.Car;
 import Builder.cars.Manual;
 import Builder.director.Director;
+import ChainOfResponsibility.handlers.AuthenticationHandler;
+import ChainOfResponsibility.handlers.AuthorizationHandler;
+import ChainOfResponsibility.handlers.Handler;
+import ChainOfResponsibility.handlers.ValidationHandler;
+import ChainOfResponsibility.request.Priority;
+import ChainOfResponsibility.request.Request;
 import Facade.facade.VideoConversionFacade;
 import Proxy.client.YouTubeDownloader;
 import Proxy.proxy.YouTubeCacheProxy;
@@ -95,12 +101,19 @@ public class Main {
 //        System.out.println("Time saved by caching proxy: " + (naiveTime - smartTime) + "ms");
 
         //Template Method
-        Network fbNetwork=new Facebook("Nerooo","0000");
-        fbNetwork.post("heyaaaa");
+//        Network fbNetwork=new Facebook("Nerooo","0000");
+//        fbNetwork.post("heyaaaa");
+//
+//        Network twNetwork=new Twitter("zzzz","1111");
+//        twNetwork.post("hope");
 
-        Network twNetwork=new Twitter("zzzz","1111");
-        twNetwork.post("hope");
-
+        //Chain of responsibility
+        Handler chain=new AuthenticationHandler();
+        chain.link(new ValidationHandler())
+                .link(new AuthorizationHandler());
+        chain.check(new Request("to make all pass", Priority.SUPER));
+        System.out.println("----------------------");
+        chain.check(new Request("authenticated only",Priority.AUTHENTICATION));
 
     }
     private static long test(YouTubeDownloader downloader) {
