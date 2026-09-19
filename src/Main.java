@@ -21,9 +21,20 @@ import ChainOfResponsibility.handlers.ValidationHandler;
 import ChainOfResponsibility.request.Priority;
 import ChainOfResponsibility.request.Request;
 import Facade.facade.VideoConversionFacade;
+import Observer.BasePublisher.EventManager;
+import Observer.Editor;
+import Observer.subscribers.EmailNotificationSubscriber;
+import Observer.subscribers.EventSubscriber;
+import Observer.subscribers.LogOpenSubscriber;
 import Proxy.client.YouTubeDownloader;
 import Proxy.proxy.YouTubeCacheProxy;
 import Proxy.some_cool_media_library.ThirdPartyYouTubeClass;
+import SimpleFactory.Payment;
+import SimpleFactory.PaymentFactory;
+import Strategy.DiscountService;
+import Strategy.strategies.DiscountStrategy;
+import Strategy.strategies.RegularDiscountStrategy;
+import Strategy.strategies.StudentDiscountStrategy;
 import TemplateMethod.Facebook;
 import TemplateMethod.Network;
 import TemplateMethod.Twitter;
@@ -33,9 +44,10 @@ public class Main {
         //Simple Factory
 //        Payment payment;
 //        payment= PaymentFactory.create("Card");
+//        payment.pay();
 
         //Simple Builder
-//        Order order= new Order.Builder()  //this new keyword creates the Builder that get modified by the builder methods-
+//        Order order= new Order.Builder()  //this new keyword creates the Builder that get modified by the builder methods
 //                .customerName("Nrmeen")
 //                .address("dufhufv")
 //                .build();        //-while the order itself is created via the build method as u know
@@ -114,6 +126,29 @@ public class Main {
 //        chain.check(new Request("to make all pass", Priority.SUPER));
 //        System.out.println("----------------------");
 //        chain.check(new Request("authenticated only",Priority.AUTHENTICATION));
+
+        //Strategy
+//        DiscountStrategy strategy=new StudentDiscountStrategy();
+//        DiscountService discountService=new DiscountService(strategy);
+//        double ret=discountService.applyDiscount(100);
+//        System.out.println(ret);
+//        System.out.println("-------------------------------------------");
+//
+//        discountService.setDiscountStrategy(new RegularDiscountStrategy());
+//        ret=discountService.applyDiscount(100);
+//        System.out.println(ret);
+
+        //Observer
+        Editor editor=new Editor();
+        EventSubscriber sub1=new EmailNotificationSubscriber("nnn@mmm");
+        editor.eventManager.subscribe("open",sub1);
+        EventSubscriber sub2=new LogOpenSubscriber();
+        editor.eventManager.subscribe("open",sub2);
+        editor.eventManager.subscribe("save",sub2);
+
+        editor.openFile();
+        editor.saveFile();
+
 
     }
 
