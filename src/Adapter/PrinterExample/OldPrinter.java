@@ -1,4 +1,4 @@
-package Adapter;
+package Adapter.PrinterExample;
 
 public class OldPrinter {
 

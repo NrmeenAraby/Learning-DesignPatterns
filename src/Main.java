@@ -3,6 +3,9 @@ import AbstractFactory.checkboxes.Checkbox;
 import AbstractFactory.factories.GuiFactory;
 import AbstractFactory.factories.MacOsFactory;
 import AbstractFactory.factories.WindowsFactory;
+import Adapter.SquarePegExample.adapters.SquarePegAdapter;
+import Adapter.SquarePegExample.round.RoundHole;
+import Adapter.SquarePegExample.square.SquarePeg;
 import Bridge.devices.Device;
 import Bridge.devices.Radio;
 import Bridge.devices.Tv;
@@ -139,15 +142,32 @@ public class Main {
 //        System.out.println(ret);
 
         //Observer
-        Editor editor=new Editor();
-        EventSubscriber sub1=new EmailNotificationSubscriber("nnn@mmm");
-        editor.eventManager.subscribe("open",sub1);
-        EventSubscriber sub2=new LogOpenSubscriber();
-        editor.eventManager.subscribe("open",sub2);
-        editor.eventManager.subscribe("save",sub2);
+//        Editor editor=new Editor();
+//        EventSubscriber sub1=new EmailNotificationSubscriber("nnn@mmm");
+//        editor.eventManager.subscribe("open",sub1);
+//        EventSubscriber sub2=new LogOpenSubscriber();
+//        editor.eventManager.subscribe("open",sub2);
+//        editor.eventManager.subscribe("save",sub2);
+//
+//        editor.openFile();
+//        editor.saveFile();
 
-        editor.openFile();
-        editor.saveFile();
+        //Adapter
+        SquarePeg smallSq= new SquarePeg(5);
+        SquarePeg largeSq= new SquarePeg(10);
+
+        RoundHole roundHole=new RoundHole(5);
+
+        SquarePegAdapter adapter1=new SquarePegAdapter(smallSq);
+        SquarePegAdapter adapter2=new SquarePegAdapter(largeSq);
+
+        if(roundHole.fit(adapter1)){
+            System.out.println("yaaa");
+        }
+
+        if(!roundHole.fit(adapter2)) {
+            System.out.println("cant");
+        }
 
 
     }
