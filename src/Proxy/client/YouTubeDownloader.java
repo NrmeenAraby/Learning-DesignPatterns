@@ -10,7 +10,7 @@ public class YouTubeDownloader {
 
     public YouTubeDownloader(ThirdPartyYouTubeLib api){
         this.api=api;
-    }
+    }  // it should be the proxy
     public void renderVideoPage(String videoId) {
         Video video=api.getVideo(videoId);
         System.out.println("\n-------------------------------");

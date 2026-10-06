@@ -29,6 +29,9 @@ import Observer.Editor;
 import Observer.subscribers.EmailNotificationSubscriber;
 import Observer.subscribers.EventSubscriber;
 import Observer.subscribers.LogOpenSubscriber;
+import Prototype.Circle;
+import Prototype.Rectangle;
+import Prototype.Shape;
 import Proxy.client.YouTubeDownloader;
 import Proxy.proxy.YouTubeCacheProxy;
 import Proxy.some_cool_media_library.ThirdPartyYouTubeClass;
@@ -41,6 +44,9 @@ import Strategy.strategies.StudentDiscountStrategy;
 import TemplateMethod.Facebook;
 import TemplateMethod.Network;
 import TemplateMethod.Twitter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -153,23 +159,60 @@ public class Main {
 //        editor.saveFile();
 
         //Adapter
-        SquarePeg smallSq= new SquarePeg(5);
-        SquarePeg largeSq= new SquarePeg(10);
+//        SquarePeg smallSq= new SquarePeg(5);
+//        SquarePeg largeSq= new SquarePeg(10);
+//
+//        RoundHole roundHole=new RoundHole(5);
+//
+//        SquarePegAdapter adapter1=new SquarePegAdapter(smallSq);
+//        SquarePegAdapter adapter2=new SquarePegAdapter(largeSq);
+//
+//        if(roundHole.fit(adapter1)){
+//            System.out.println("yaaa");
+//        }
+//
+//        if(!roundHole.fit(adapter2)) {
+//            System.out.println("cant");
+//        }
 
-        RoundHole roundHole=new RoundHole(5);
+        //Prototype
+        List<Shape> shapes=new ArrayList<>();
+        List<Shape>shapesCopy=new ArrayList<>();
 
-        SquarePegAdapter adapter1=new SquarePegAdapter(smallSq);
-        SquarePegAdapter adapter2=new SquarePegAdapter(largeSq);
+        Circle circle = new Circle();
+        circle.setX(10);
+        circle.setY(20);
+        circle.setRadius(15);
+        circle.setColor("red");
+        shapes.add(circle);
 
-        if(roundHole.fit(adapter1)){
-            System.out.println("yaaa");
+        Circle anotherCircle=(Circle) circle.clone();
+        shapes.add(anotherCircle);
+
+        Rectangle rectangle = new Rectangle();
+        rectangle.setWidth(10);
+        rectangle.setHeight(20);
+        rectangle.setColor("blue");
+        shapes.add(rectangle);
+
+        for(Shape shape:shapes){
+            shapesCopy.add(shape.clone());
         }
 
-        if(!roundHole.fit(adapter2)) {
-            System.out.println("cant");
+        for(int i=0;i<shapes.size();i++){
+            if(shapes.get(i)!=shapesCopy.get(i)){
+                System.out.println("yess, shaper are different objects");
+                if(shapes.get(i).equals(shapesCopy.get(i))){
+                    System.out.println("yesss, and they are identical");
+                }
+                else{
+                    System.out.println("oh! but they aren't identical!");
+                }
+            }
+            else{
+                System.out.println("oh! objects are the same!");
+            }
         }
-
-
     }
 
 
